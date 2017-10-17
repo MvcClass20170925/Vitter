@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Vitter.Models.Video>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VideoID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VideoFile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mimetype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Owner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hashtags)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VideoID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VideoFile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mimetype)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Owner)
+                </td>
+                <td>
+                    <ul style="list-style:none">
+                        @foreach (var ht in item.Hashtags)
+                        {
+                            <li>#@ht.Name</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.VideoID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.VideoID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.VideoID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
